@@ -1,0 +1,344 @@
+--Test cases--
+o:Type one of the following commands:
+o:change section
+o:add section
+o:add student
+o:add assignment to student
+o:add assignment to section
+o:set score
+o:mark tardy
+o:mark absent
+o:get overall score
+o:get overall score avg
+o:get assignment score
+o:get assignment score avg
+o:get tardy count
+o:get absent count
+
+/////testing add student before section to make sure program properly handles the case where there are no sections created and a different operation is called.
+i:add student
+o:enter student first name
+i:bob
+o:enter student last name
+i:joe
+o:enter student username
+i:bobjoe
+o:enter a phone number including area code as a 10 digit number
+i:1231231234
+o:There was an error with the command, operation not completed
+//should not create add a student because there are no sections added yet
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to make sure the gradebook can add sections
+i:add section
+o:Enter a section name
+i:am
+o:action completed successfully
+//should see the section created in gradebook with the name am but no students added. Current section should show "am" is active
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to make sure it doesnt allow you to add a section if there is already one with that sectionName
+i:add section
+o:Enter a section name
+i:am
+o:There was an error with the command, operation not completed
+//should not be added because there is already a section with that name in the gradebook
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+///testing to make sure that the grade book can add more than one section
+i:add section
+o:Enter a section name
+i:pm
+o:action completed successfully
+//should see the section created in gradebook with the name pm but no students added. pm is currentSection
+
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to make sure a student can be created and added to the active section
+i:add student
+o:Enter student first name
+i:david
+o:Enter student last name
+i:baker
+o:Enter student username
+i:davidbaker
+o:Enter student phone number
+i:1231231234
+o:action completed successfully
+//should see student is created and added to the pm section and the student should have the information specified absent/tardycount should be 0 and have 0 assignments assigned.
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to make sure a second student can be created and added to the active section
+i:add student
+o:Enter student first name
+i:david
+o:Enter student last name
+i:baker
+o:Enter student username
+i:davidbaker1
+o:Enter student phone number
+i:1231231234
+o:action completed successfully
+//should see student is created and added to the pm section and the student should have the information specified
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to make sure a student can be created and added to the active section
+i:add student
+o:Enter student first name
+i:bob
+o:Enter student last name
+i:joe
+o:Enter student username
+i:bob1
+o:Enter student phone number
+i:9879879876
+o:action completed successfully
+//should see student is created and added to the pm section and the student should have the information specified
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to find how to add tardies to a student if the student exists
+(Student Exists)
+i:mark tardy
+o:Enter student username
+i:davidbaker1
+o:action completed successfully
+//should see 1 tardy is you use the getTardyCount method
+(Student Doesn't Exist)
+i:mark tardy
+o:Enter student username
+i:davidbaker1
+o:There was an error with the command, operation not completed
+//because the student doesn't exist the command could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to find how to add absents to a student if the student exists
+(Student Exists)
+i:mark absent
+o:Enter student username
+i:davidbaker1
+o:action completed successfully
+//should see 1 absent is you use the getAbsentCount method
+(Student Doesn't Exist)
+i:mark absent
+o:Enter student username
+i:davidbaker1
+o:There was an error with the command, operation not completed
+//because the student doesn't exist the command could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing how to use the getTardyCount method if the student exists
+(Student Exists)
+i:get tardy count
+o:Enter student username
+i:davidbaker1
+o:action completed successfully
+//should see the amount of tardies the student has if they have any
+(Student Doesn't Exist)
+i:get tardy count
+o:Enter student username
+i:davidbaker1
+o:There was an error with the command, operation not completed
+//becuase student doesn't exist the command could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing how to use the getTardyCount method if the student exists
+(Student Exists)
+i:get absent count
+o:Enter student username
+i:davidbaker1
+o:action completed successfully
+//should see the amount of absents the student has if they have any
+(Student Doesn't Exist)
+i:get absent count
+o:Enter student username
+i:davidbaker1
+o:There was an error with the command, operation not completed
+//because the student doesn't exist the command could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to see if you can change sections if the exists
+(Section Exists)
+i:change section
+o:Enter a section name
+i:am
+o:action completed successfully
+//the section should change to the section that was entered
+(Section Doesn't Exist)
+i:change section
+o:Enter a section name
+i:am
+o:There was an error with the command, operation not completed
+//becuase the section didn't exist the command could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to see if you can add a assignment to a student if they exist
+(Student Exists)
+i:add assignment to student
+o:Enter student name
+i:davidbaker1
+o:Enter assignment name
+i:MathTest
+o:Enter possible points
+i:100
+o:does the student already have this assignment
+i:no
+o:action completed successfully
+//because the student exists and doen't have that assignment the assignment could be added to the student
+(Student Doesn't Exist
+i:add assignment to student
+o:Enter student name
+i:davidbaker1
+o:Enter assignment name
+i:MathTest
+o:Enter possible points
+i:100
+o:does the student already have this assignment
+i:no
+o:There was an error with the command, operation not completed
+//because the student didn't exist the command could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to see if you can add an assignment to a section if you have a section that exists
+(Section Exists)
+i:add assignment to section
+o:Enter assignment name
+i:MathTest
+o:Enter possible points
+i:100
+o:does a student already have this assignment
+i:no
+o:action completed successfully
+//because you have a section that exists the assignment was added to that section and every student had access to it
+(Section Doesn't Exist)
+i:add assignment to section
+o:Enter assignment name
+i:MathTest
+o:Enter possible points
+i:100
+o:does a student already have this assignment
+i:no
+o:There was an error with the command, operation not completed
+//because there was no section that existed the command could not be executed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to see what happens if a student already has the assignment for the addAssignmentToStudent command
+i:add assignment to student
+o:Enter student username
+i:davidbaker1
+o:Enter assignment name
+i:MathTest
+o:Enter possible points
+i:100
+o:does this student already have this assignment
+i:yes
+o:There was an error with the command, operation not completed
+//becasue the student already had the assignment the command could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing to see if you can add an assignment to a section with a student that already has the assignment in that section with addAssignmentToSection command
+i:add assignment to section
+o:Enter assignment name
+i:MathTest
+o:Enter possible points
+i:100
+o:does a student already have this assignment
+i:yes
+o:There was an error with the command, operation not completed
+//because there was already a student with that assignment in that section the command could not be executed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing the setScore command if there is no student, assignment, or section
+(Student Doesn't Exist)
+i:set score
+o:Enter username
+i:davidbaker1
+o:There was an error with the command, operation not completed
+//because there was no student with that username the command was not executed
+(Assignment Doesn't Exist)
+i:set score
+o:Enter username
+i:davidbaker1
+o:Enter assignment name
+i:MathTest
+o:There was an error with the command, operation not completed
+//because the assignment didn't exist the command could not be completed
+(Section Doesn't Exist)
+i:set score
+o:There was an error with the command, operation not completed
+//because there was no section the command could barely even start
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing the setScore command if a student, assignment, and section exist
+i:set score
+o:Enter username
+i:samuel
+o:Enter assignment name
+i:Test
+o:Enter points earned
+i:100
+o:action completed successfully
+//because all three things exist the command could be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing getOverallScore command if student, assignment(s), and section exist because if they didn't we both know that the command would fail at those spots
+i:get overall score
+o:Enter username
+i:samuel
+o:100
+//action completed successfully, becasue everything needed was there the command was exectued, and we both know that if one of the three things was missing the command would fail
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing getOverallScoreAvg command if everything needed is there, and if there are no assignments or sections the command would not be completed
+i:get overall score average
+o:get each students overall score
+i:get average of the students with assignments and turn into percent
+o:87
+//action completed succesfully, because everything needed was there the command could be exectued
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing getAssignmentScorePercent command if the student, assignment, and section exist
+(Student Exists And Has Specified Assignment)
+i:get assignment score percent
+o:Enter username
+i:samuel
+o:Enter assignment name
+i:Test
+o:turns points earned into percent
+//action completed successfully, because everything needed is there the action could be executed
+(Student Exists But Doesn't Have Specified Assignment)
+i:get assignment score percent
+o:Enter username
+i:samuel
+o:Enter assignment name
+i:Test
+o:There was an error with the command, operation not completed
+//because the specific assignment did not exist with that student the action could not be completed
+
+o:Type one of the following commands:\nchange section\nadd section\nadd student\nadd assignment to student\nadd assignment to section\nset score\nmark tardy\nmark absent\nget overall score\nget overall score avg\nget assignment score\nget assignment score avg\nget tardy count\nget absent count
+
+/////testing getAssignmentScoreAvg command only students with assignment will be counted in average but if they have everything else the command will be completed
+i:get assignment score average
+o:Enter assignment name
+i:test
+o:get average for that assignment then turn into a percent
+//action completed successfully, because everything needed was there the command could be completed
