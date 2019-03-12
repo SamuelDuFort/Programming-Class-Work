@@ -6,8 +6,61 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+        /*test cases
+        o:create account
+          login
+        i:login
+        o:enter username:
+        i:sam
+        o:create account
+          login
+        i:create account
+        o:enter username:
+        i:samuel
+        o:enter password:
+        i:password
+        o:create account
+          login
+        i:create account
+        o:enter username:
+        i:samuel
+        o:sorry, please enter a different username:
+        i:sam1
+        o:enter password:
+        i:password
+        o:sorry, please enter a different password:
+        i:8802
+        o:create account
+          login
+        i:login
+        o:enter username:
+        i:sam
+        o:create account
+          login
+        i:login
+        o:enter username:
+        i:sam1
+        o:enter password:
+        i:password
+        o:sorry account does not match records
+          create account
+          login
+        i:login
+        o:enter username:
+        i:samuel
+        o:enter password:
+        i:8802
+        o:sorry account does not match records
+          create account
+          login
+        i:login
+        o:enter username:
+        i:sam1
+        o:enter password:
+        i:8802
+        o:welcome, sam1
+        */
         Scanner console = new Scanner(System.in);
-
 
         ArrayList<String> usernameBank = new ArrayList<String>();
         ArrayList<String> passwordBank = new ArrayList<String>();
