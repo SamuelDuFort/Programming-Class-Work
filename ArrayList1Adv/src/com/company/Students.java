@@ -5,10 +5,10 @@ package com.company;
  */
 public class Students {
     //properties
-    //firstName
-    //lastName
-    //username
-    //phone#
+    private String firstName;
+    private String lastName;
+    private String username;
+    private long phoneNumber;
     //list/array of assignments
 
     //methods

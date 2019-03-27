@@ -5,6 +5,10 @@ package com.company;
  */
 public class Section1 {
     //properties
+    private String assignmentNane;
+    private int pointsPossible;
+    private String username;
+    private int pointsEarned;
     //list/array of students
 
     //methods

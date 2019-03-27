@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        /*test cases
+        /*test case
         o:create account
           login
         i:login
@@ -98,6 +98,7 @@ public class Main {
                     }
                 }
                 passwordBank.add(password);
+                System.out.println("your account has been created");
             }
 
             if (userInput.equals("login")) {
